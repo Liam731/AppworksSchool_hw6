@@ -8,16 +8,18 @@ contract WrappedEtherTest is Test {
     event Deposit(address indexed account, uint256 amount);
     event Withdraw(address indexed account, uint256 amount);
     event Transfer(address indexed from, address indexed to, uint256 amount);
-    event Approve(address indexed spender, uint256 amount);
+    event Approve(address indexed owner, address indexed spender, uint256 amount);
 
     WrappedEther public we;
     address user1;
     address user2;
+    address user3;
 
     function setUp() public {
         we = new WrappedEther();
         user1 = makeAddr("Liam");
         user2 = makeAddr("Bob");
+        user3 = makeAddr("Dora");
     }
 
     function testDepositAndWithdraw() public {
@@ -78,11 +80,20 @@ contract WrappedEtherTest is Test {
     function testApproveAndTansferfrom() public {
         //approve test
         startHoax(user1, 100 ether);
-        vm.expectEmit(true,false,false,true);
-        emit Approve(user2, 20 ether);
-        (bool isApprove,) = address(we).call(abi.encodeWithSignature("approve(address,uint256)", user2, 20 ether));
+        (bool isDeposit,) = address(we).call{value: 30 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+        bool isApprove = we.approve(user2, 20 ether);
         require(isApprove);
-        
+        uint256 beforeAllowance = we.allowance(user1, user2);
+        assertEq(beforeAllowance, 20 ether); //test08
+        vm.stopPrank();
+
+        //transferFrom test
+        vm.startPrank(user2);
+        bool isTansferFrom = we.transferFrom(user1, user3, 8 ether);
+        require(isTansferFrom); //test09
+        uint256 afterAllowance = we.allowance(user1, user2);
+        assertEq(beforeAllowance - afterAllowance, 8 ether); //test10
 
         vm.stopPrank();
     }
