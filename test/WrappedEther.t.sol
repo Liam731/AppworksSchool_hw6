@@ -8,53 +8,114 @@ contract WrappedEtherTest is Test {
     event Deposit(address indexed account, uint256 amount);
     event Withdraw(address indexed account, uint256 amount);
     event Transfer(address indexed from, address indexed to, uint256 amount);
-    event Approve(address indexed spender, uint256 amount);
+    event Approve(address indexed owner, address indexed spender, uint256 amount);
 
     WrappedEther public we;
     address user1;
     address user2;
+    address user3;
 
     function setUp() public {
         we = new WrappedEther();
         user1 = makeAddr("Liam");
         user2 = makeAddr("Bob");
+        user3 = makeAddr("Dora");
     }
 
-    function testDepositAndWithdraw() public {
-        //deposit test
-        uint256 beforeContractBalance = we.totalSupply();
+    function testDeposit01() public {
+
         startHoax(user1, 100 ether);
 
-        vm.expectEmit(true, false, false, true); //test03
-        emit Deposit(user1, 15 ether);
         (bool isDeposit,) = address(we).call{value: 15 ether}(abi.encodeWithSignature("deposit(address)", user1));
         require(isDeposit);
 
         (bool isBalanceOf,bytes memory value) = address(we).call(abi.encodeWithSignature("balanceOf(address)", user1));
         require(isBalanceOf);
         uint256 userBalance = abi.decode(value,(uint256));
-        assertEq(userBalance, 15 ether); //test01
 
-        uint256 afterContractBalance = we.totalSupply();
-        assertEq(afterContractBalance - beforeContractBalance, 15 ether); //test02
-
-        //withdraw test
-        uint256 beforeUserBalance = user1.balance;
-        beforeContractBalance = we.totalSupply();
-        vm.expectEmit(true,false,false,true); //test06
-        emit Withdraw(user1, 5 ether);
-        (bool isWithdraw,) = address(we).call(abi.encodeWithSignature("withdraw(uint256)", 5 ether));
-        require(isWithdraw);
-        uint256 afterUserBalance = user1.balance;
-        afterContractBalance = we.totalSupply();
-        
-        assertEq(beforeContractBalance - afterContractBalance, 5 ether); //test04
-        assertEq(afterUserBalance - beforeUserBalance, 5 ether); //test05
+        assertEq(userBalance, 15 ether);
 
         vm.stopPrank();
     }
 
-    function testTransfer() public {
+    function testDeposit02() public {
+
+        uint256 beforeContractBalance = we.totalSupply();
+        startHoax(user1, 100 ether);
+
+        (bool isDeposit,) = address(we).call{value: 15 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+
+        uint256 afterContractBalance = we.totalSupply();
+        assertEq(afterContractBalance - beforeContractBalance, 15 ether);
+
+        vm.stopPrank();
+    }
+
+    function testDeposit03() public {
+
+        startHoax(user1, 100 ether);
+
+        vm.expectEmit(true, false, false, true);
+        emit Deposit(user1, 15 ether);
+        (bool isDeposit,) = address(we).call{value: 15 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+
+        vm.stopPrank();
+    }
+
+    function testWithdraw04() public {
+
+        startHoax(user1, 100 ether);
+
+        (bool isDeposit,) = address(we).call{value: 15 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+
+        uint256 beforeContractBalance = we.totalSupply();
+
+        bool isWithdraw = we.withdraw(5 ether);
+        require(isWithdraw);
+
+        uint256 afterContractBalance = we.totalSupply();
+        
+        assertEq(beforeContractBalance - afterContractBalance, 5 ether);
+
+        vm.stopPrank();
+    }
+
+    function testWithdraw05() public {
+
+        startHoax(user1, 100 ether);
+
+        (bool isDeposit,) = address(we).call{value: 15 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+
+        uint256 beforeUserBalance = user1.balance;
+        bool isWithdraw = we.withdraw(5 ether);
+        require(isWithdraw);
+        uint256 afterUserBalance = user1.balance;
+        
+        assertEq(afterUserBalance - beforeUserBalance, 5 ether);
+
+        vm.stopPrank();
+    }
+
+    function testWithdraw06() public {
+
+        startHoax(user1, 100 ether);
+
+        (bool isDeposit,) = address(we).call{value: 15 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+
+        vm.expectEmit(true,false,false,true);
+        emit Withdraw(user1, 5 ether);
+        bool isWithdraw = we.withdraw(5 ether);
+        require(isWithdraw);
+
+        vm.stopPrank();
+    }
+
+    function testTransfer07() public {
 
         startHoax(user1, 30 ether);
         (bool isDeposit1,) = address(we).call{value: 30 ether}(abi.encodeWithSignature("deposit(address)", user1));
@@ -70,20 +131,63 @@ contract WrappedEtherTest is Test {
         uint256 tAfterUser2Balance = we.balanceOf(user2);
         
         assertEq(tBeforeUser1Balance - tAfterUser1Balance, 3 ether);
-        assertEq(tAfterUser2Balance - tBeforeUser2Balance, 3 ether); //test07
+        assertEq(tAfterUser2Balance - tBeforeUser2Balance, 3 ether);
 
         vm.stopPrank();
     }
 
-    function testApproveAndTansferfrom() public {
-        //approve test
+    function testApprove08() public {
+
         startHoax(user1, 100 ether);
-        vm.expectEmit(true,false,false,true);
-        emit Approve(user2, 20 ether);
-        (bool isApprove,) = address(we).call(abi.encodeWithSignature("approve(address,uint256)", user2, 20 ether));
+
+        (bool isDeposit,) = address(we).call{value: 30 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+        bool isApprove = we.approve(user2, 20 ether);
         require(isApprove);
-        
+        uint256 beforeAllowance = we.allowance(user1, user2);
+
+        assertEq(beforeAllowance, 20 ether);
 
         vm.stopPrank();
     }
+
+    function testTransferFrom09() public {
+
+        startHoax(user1, 100 ether);
+
+        (bool isDeposit,) = address(we).call{value: 30 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+        bool isApprove = we.approve(user2, 20 ether);
+        require(isApprove);
+
+        vm.stopPrank();
+
+        vm.startPrank(user2);
+
+        bool isTransferFrom = we.transferFrom(user1, user3, 8 ether);
+        assertEq(isTransferFrom, true);
+
+        vm.stopPrank();
+    }
+
+    function testTransferFrom10() public {
+
+        startHoax(user1, 100 ether);
+        (bool isDeposit,) = address(we).call{value: 30 ether}(abi.encodeWithSignature("deposit(address)", user1));
+        require(isDeposit);
+        bool isApprove = we.approve(user2, 20 ether);
+        require(isApprove);
+        uint256 beforeAllowance = we.allowance(user1, user2);
+
+        vm.stopPrank();
+
+        vm.startPrank(user2);
+        bool isTansferFrom = we.transferFrom(user1, user3, 8 ether);
+        require(isTansferFrom);
+        uint256 afterAllowance = we.allowance(user1, user2);
+        assertEq(beforeAllowance - afterAllowance, 8 ether);
+
+        vm.stopPrank();
+    }
+
 }

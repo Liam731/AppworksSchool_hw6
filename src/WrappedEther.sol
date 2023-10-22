@@ -8,8 +8,6 @@ interface IERC20 {
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    function mint(address account, uint256 value) external returns (bool);
-    function burn(address account, uint256 value) external returns (bool);
     function totalSupply() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
     function transfer(address to, uint256 value) external returns (bool);
@@ -35,6 +33,12 @@ contract WrappedEther is IERC20 {
         _balance[msg.sender] = 10 ether;
         _totalSupply = 10 ether;       
      }
+
+    modifier onlyOwner(){
+        require(msg.sender == _owner, "only contract's owner can call this function");
+        _;
+    }
+
     function name() public view returns (string memory) {
         return _name;
     }
@@ -52,28 +56,15 @@ contract WrappedEther is IERC20 {
         emit Deposit(account, msg.value);
         return true;
     }
+
     function withdraw(uint256 _amount) external returns(bool){
-        burn(msg.sender, _amount);
+        require(msg.sender != address(0), "ERROR: Withdraw from address 0");
+        uint256 accountBalance = _balance[msg.sender];
+        require(accountBalance >= _amount, "ERROR: no more token to burn");
+        _balance[msg.sender] = accountBalance - _amount;
+        _totalSupply -= _amount;
         payable(msg.sender).transfer(_amount);
         emit Withdraw(msg.sender, _amount);
-        return true;
-    }
-
-    function mint(address account, uint256 amount) public returns(bool){
-        require(account != address(0), "ERROR: mint to address 0");
-        _totalSupply += amount;
-        _balance[account] += amount;
-        emit Transfer(address(0), account, amount);
-        return true;
-    }
-
-    function burn(address account, uint256 amount) public returns(bool){
-        require(account != address(0), "ERROR: burn from address 0");
-        uint256 accountBalance = _balance[account];
-        require(accountBalance >= amount, "ERROR: no more token to burn");
-        _balance[account] = accountBalance - amount;
-        _totalSupply -= amount;
-        emit Transfer(account, address(0), amount);
         return true;
     }
     
@@ -119,6 +110,4 @@ contract WrappedEther is IERC20 {
         emit Transfer(from, to, amount);
         return true;
     }
-
-
 }
