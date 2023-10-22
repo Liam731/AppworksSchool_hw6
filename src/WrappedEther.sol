@@ -32,11 +32,6 @@ contract WrappedEther is IERC20 {
 
         _balance[msg.sender] = 10 ether;
         _totalSupply = 10 ether;       
-     }
-
-    modifier onlyOwner(){
-        require(msg.sender == _owner, "only contract's owner can call this function");
-        _;
     }
 
     function name() public view returns (string memory) {
