@@ -12,7 +12,11 @@
   },
   "files": {
     "lib/forge-std/lib/ds-test/src/test.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393514920,
+=======
+      "lastModificationDate": 1697396690635,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "9febff9d09f18af5306669dc276c4c43",
       "sourceName": "lib/forge-std/lib/ds-test/src/test.sol",
       "solcConfig": {
@@ -53,7 +57,11 @@
       }
     },
     "lib/forge-std/src/Base.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513862,
+=======
+      "lastModificationDate": 1697396690635,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "ee13c050b1914464f1d3f90cde90204b",
       "sourceName": "lib/forge-std/src/Base.sol",
       "solcConfig": {
@@ -103,7 +111,11 @@
       }
     },
     "lib/forge-std/src/Script.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513862,
+=======
+      "lastModificationDate": 1697396690636,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "ba325c778a7da8a21c2136aa32763c14",
       "sourceName": "lib/forge-std/src/Script.sol",
       "solcConfig": {
@@ -158,7 +170,11 @@
       }
     },
     "lib/forge-std/src/StdAssertions.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513862,
+=======
+      "lastModificationDate": 1697396690636,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "6cc2858240bcd443debbbf075490e325",
       "sourceName": "lib/forge-std/src/StdAssertions.sol",
       "solcConfig": {
@@ -202,7 +218,11 @@
       }
     },
     "lib/forge-std/src/StdChains.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690636,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "b0324b2e5a11948f852032aa293b3a05",
       "sourceName": "lib/forge-std/src/StdChains.sol",
       "solcConfig": {
@@ -245,7 +265,11 @@
       }
     },
     "lib/forge-std/src/StdCheats.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690636,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "d984e2c76dae07bac1e292af2a5d4fd1",
       "sourceName": "lib/forge-std/src/StdCheats.sol",
       "solcConfig": {
@@ -293,7 +317,11 @@
       }
     },
     "lib/forge-std/src/StdError.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690636,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "64c896e1276a291776e5ea5aecb3870a",
       "sourceName": "lib/forge-std/src/StdError.sol",
       "solcConfig": {
@@ -334,7 +362,11 @@
       }
     },
     "lib/forge-std/src/StdInvariant.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690636,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "0a580d6fac69e9d4b6504f747f3c0c24",
       "sourceName": "lib/forge-std/src/StdInvariant.sol",
       "solcConfig": {
@@ -375,7 +407,11 @@
       }
     },
     "lib/forge-std/src/StdJson.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690636,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "a341308627b7eeab7589534daad58186",
       "sourceName": "lib/forge-std/src/StdJson.sol",
       "solcConfig": {
@@ -418,7 +454,11 @@
       }
     },
     "lib/forge-std/src/StdMath.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690637,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "9da8f453eba6bb98f3d75bc6822bfb29",
       "sourceName": "lib/forge-std/src/StdMath.sol",
       "solcConfig": {
@@ -459,7 +499,11 @@
       }
     },
     "lib/forge-std/src/StdStorage.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690637,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "abd6f3379e6e2a7979b18abc21aea0c1",
       "sourceName": "lib/forge-std/src/StdStorage.sol",
       "solcConfig": {
@@ -505,7 +549,11 @@
       }
     },
     "lib/forge-std/src/StdStyle.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513863,
+=======
+      "lastModificationDate": 1697396690637,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "6281165a12aa639705c691fccefd855e",
       "sourceName": "lib/forge-std/src/StdStyle.sol",
       "solcConfig": {
@@ -548,7 +596,11 @@
       }
     },
     "lib/forge-std/src/StdUtils.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513864,
+=======
+      "lastModificationDate": 1697396690637,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "3ce83748fd76644688f916c9cced545b",
       "sourceName": "lib/forge-std/src/StdUtils.sol",
       "solcConfig": {
@@ -592,7 +644,11 @@
       }
     },
     "lib/forge-std/src/Test.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513864,
+=======
+      "lastModificationDate": 1697396690637,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "15866901137b5670eabf31362523bd28",
       "sourceName": "lib/forge-std/src/Test.sol",
       "solcConfig": {
@@ -651,7 +707,11 @@
       }
     },
     "lib/forge-std/src/Vm.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513864,
+=======
+      "lastModificationDate": 1697396690637,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "eff2556a384c025f56150fb3f78de858",
       "sourceName": "lib/forge-std/src/Vm.sol",
       "solcConfig": {
@@ -695,7 +755,11 @@
       }
     },
     "lib/forge-std/src/console.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513864,
+=======
+      "lastModificationDate": 1697396690638,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "100b8a33b917da1147740d7ab8b0ded3",
       "sourceName": "lib/forge-std/src/console.sol",
       "solcConfig": {
@@ -736,7 +800,11 @@
       }
     },
     "lib/forge-std/src/console2.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513865,
+=======
+      "lastModificationDate": 1697396690638,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "491ca717c1915995e78cc361485a3067",
       "sourceName": "lib/forge-std/src/console2.sol",
       "solcConfig": {
@@ -777,7 +845,11 @@
       }
     },
     "lib/forge-std/src/interfaces/IMulticall3.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513865,
+=======
+      "lastModificationDate": 1697396690639,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "7b131ca1ca32ef6378b7b9ad5488b901",
       "sourceName": "lib/forge-std/src/interfaces/IMulticall3.sol",
       "solcConfig": {
@@ -818,7 +890,11 @@
       }
     },
     "lib/forge-std/src/safeconsole.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393513866,
+=======
+      "lastModificationDate": 1697396690639,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "ac3b1bf5a444db5db3656021830258a8",
       "sourceName": "lib/forge-std/src/safeconsole.sol",
       "solcConfig": {
@@ -859,7 +935,11 @@
       }
     },
     "script/Counter.s.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697393512603,
+=======
+      "lastModificationDate": 1697396690642,
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "contentHash": "7539680fbd3ad49c6632713cc2bb6bf6",
       "sourceName": "script/Counter.s.sol",
       "solcConfig": {
@@ -915,8 +995,13 @@
       }
     },
     "src/WrappedEther.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697981296369,
       "contentHash": "ff1763e3d64405e36386b67492caa2ac",
+=======
+      "lastModificationDate": 1697396690642,
+      "contentHash": "c2cfc0642b25e5602d5d552b3e0bc621",
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "sourceName": "src/WrappedEther.sol",
       "solcConfig": {
         "settings": {
@@ -959,8 +1044,13 @@
       }
     },
     "test/WrappedEther.t.sol": {
+<<<<<<< HEAD
       "lastModificationDate": 1697985936028,
       "contentHash": "67612e3ceb88367a37f84c0eb6cba9f4",
+=======
+      "lastModificationDate": 1697399273675,
+      "contentHash": "fd1ad85a9dc5bbde33d452bca1b16c0c",
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
       "sourceName": "test/WrappedEther.t.sol",
       "solcConfig": {
         "settings": {

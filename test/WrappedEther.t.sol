@@ -139,14 +139,29 @@ contract WrappedEtherTest is Test {
     function testApprove08() public {
 
         startHoax(user1, 100 ether);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
         (bool isDeposit,) = address(we).call{value: 30 ether}(abi.encodeWithSignature("deposit(address)", user1));
         require(isDeposit);
         bool isApprove = we.approve(user2, 20 ether);
         require(isApprove);
         uint256 beforeAllowance = we.allowance(user1, user2);
+<<<<<<< HEAD
 
         assertEq(beforeAllowance, 20 ether);
+=======
+        assertEq(beforeAllowance, 20 ether); //test08
+        vm.stopPrank();
+
+        //transferFrom test
+        vm.startPrank(user2);
+        bool isTansferFrom = we.transferFrom(user1, user3, 8 ether);
+        require(isTansferFrom); //test09
+        uint256 afterAllowance = we.allowance(user1, user2);
+        assertEq(beforeAllowance - afterAllowance, 8 ether); //test10
+>>>>>>> 1087c1ee0780a28dc95148b96a05a8448428a119
 
         vm.stopPrank();
     }
